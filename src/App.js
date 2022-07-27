@@ -1,9 +1,19 @@
-function App() {
+import { Route, Routes } from 'react-router-dom';
+
+import Navigation from './components/Navigation';
+import FavoritesPage from './pages/FavoritesPage';
+import HomePage from './pages/HomePage';
+import UserDetailsPage from './pages/UserDetailsPage';
+
+export default function App() {
   return (
-    <div className="App">
-      <h1>App goes here</h1>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
+        <Route path="user/:id" element={<UserDetailsPage />} />
+      </Routes>
+      <Navigation />
+    </>
   );
 }
-
-export default App;

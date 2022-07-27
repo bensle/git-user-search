@@ -9,16 +9,17 @@ export default styled.createGlobalStyle`
     padding: 0;
   }
   :root {
-    --textcolor: black;
+    --textcolor: #fff;
+    --backgroundColor: lightgray;
   }
 
   body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
+    color: white;
+    background-color: #262a34;
+    font-family: 'Ubuntu', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100vh;
   }
 
   button,
