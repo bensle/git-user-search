@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
@@ -11,7 +11,7 @@ export default function App() {
   const [searchResults, setSearchResults] = useState([]);
   const GITKEY = process.env.REACT_APP_GITKEY;
 
-  const URL = `https://api.github.com/search/users?q=${searchInput}`;
+  const URL = `https://api.github.com/search/users?q=${searchInput}&per_page=1000`;
 
   function fetchData() {
     if (URL !== 'https://api.github.com/search/users?q=') {
@@ -46,6 +46,7 @@ export default function App() {
               onHandleChange={handleChange}
               searchInput={searchInput}
               onFetchData={fetchData}
+              searchResults={searchResults}
             />
           }
         />
