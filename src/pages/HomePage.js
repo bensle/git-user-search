@@ -3,13 +3,17 @@ import styled from 'styled-components';
 
 import SearchBar from '../components/SearchBar';
 
-export default function HomePage() {
+export default function HomePage({ onHandleChange, searchInput, onFetchData }) {
   return (
     <Container>
       <Heading>
         <GitIcon /> GitHub User-Search
       </Heading>
-      <SearchBar />
+      <SearchBar
+        onHandleChange={onHandleChange}
+        searchInput={searchInput}
+        onFetchData={onFetchData}
+      />
     </Container>
   );
 }

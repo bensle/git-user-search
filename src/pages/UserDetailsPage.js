@@ -1,3 +1,7 @@
 export default function UserDetailsPage() {
-  return;
+  return (
+    <>
+      <h1>UserDetails</h1>
+    </>
+  );
 }

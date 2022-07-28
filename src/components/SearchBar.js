@@ -1,26 +1,38 @@
+import { useEffect } from 'react';
 import { MdSearch } from 'react-icons/md';
 import styled from 'styled-components';
 
-export default function SearchBar() {
+export default function SearchBar({
+  onHandleChange,
+  searchInput,
+  onFetchData,
+}) {
+  useEffect(() => {
+    if (searchInput.length > 2) {
+      onFetchData();
+    }
+  }, [searchInput]);
+
   return (
-    <>
+    <SearchForm>
       <SearchLabelSR htmlFor="usersearch">Enter GitHub-Username</SearchLabelSR>
-      <SearchBarWrapper>
-        <SearchInput
-          type="text"
-          name="usersearch"
-          id="usersearch"
-        ></SearchInput>
-        <SearchIcon />
-      </SearchBarWrapper>
-    </>
+      <SearchInput
+        type="text"
+        name="usersearch"
+        id="usersearch"
+        placeholder="Enter username..."
+        value={searchInput}
+        onChange={onHandleChange}
+      ></SearchInput>
+      <SearchIcon />
+    </SearchForm>
   );
 }
 
-const SearchBarWrapper = styled.section`
+const SearchForm = styled.form`
   display: flex;
-  border: 2px solid white;
-  padding: 0.5rem;
+  border: 1px solid white;
+  padding: 5px;
   border-radius: 10px;
   align-items: center;
   width: 60vw;
@@ -28,7 +40,8 @@ const SearchBarWrapper = styled.section`
 `;
 
 const SearchIcon = styled(MdSearch)`
-  font-size: 2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
 `;
 
 const SearchLabelSR = styled.label`
@@ -49,7 +62,7 @@ const SearchInput = styled.input`
   outline: none;
   background-color: transparent;
   border: 0px none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: var(--textcolor);
-  padding: 10px;
+  padding: 5px;
 `;
