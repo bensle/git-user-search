@@ -11,13 +11,13 @@ export default function App() {
   const [searchResults, setSearchResults] = useState([]);
   const GITKEY = process.env.REACT_APP_GITKEY;
 
-  const URL = `https://api.github.com/search/users?q=${searchInput}&per_page=1000`;
+  const URL = `https://api.github.com/search/users?q=${searchInput}`;
 
   function fetchData() {
     if (URL !== 'https://api.github.com/search/users?q=') {
       fetch(URL, {
         headers: {
-          Accept: 'application/vnd.github.text-match+json',
+          Accept: 'application/vnd.github+json',
           Authorization: `Token ${GITKEY}`,
         },
       })
@@ -30,6 +30,18 @@ export default function App() {
         });
     }
   }
+  // const handleScroll = () => {
+  //   let userScrollHeight = window.innerHeight + window.scrollY;
+  //   let windowBottomHeight = document.documentElement.offsetHeight;
+  //   if (userScrollHeight >= windowBottomHeight) {
+  //     fetchData();
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchData();
+  //   window.addEventListener('scroll', handleScroll);
+  // }, []);
 
   const handleChange = event => {
     setSearchinput(event.target.value);

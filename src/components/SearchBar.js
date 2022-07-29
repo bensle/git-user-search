@@ -31,7 +31,7 @@ export default function SearchBar({
 
 const SearchForm = styled.form`
   display: flex;
-  border: 1px solid white;
+  border: 2px solid white;
   padding: 5px;
   border-radius: 10px;
   align-items: center;
