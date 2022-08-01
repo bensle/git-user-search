@@ -6,21 +6,26 @@ import UserList from '../components/UserList';
 
 export default function HomePage({
   onHandleChange,
-  searchInput,
-  onFetchData,
-  searchResults,
+  query,
+  users,
+  loading,
+  error,
+  hasMore,
+  setPageNumber,
 }) {
   return (
     <Container>
       <Heading>
         <GitIcon /> GitHub User-Search
       </Heading>
-      <SearchBar
-        onHandleChange={onHandleChange}
-        searchInput={searchInput}
-        onFetchData={onFetchData}
+      <SearchBar onHandleChange={onHandleChange} query={query} />
+      <UserList
+        users={users}
+        loading={loading}
+        error={error}
+        hasMore={hasMore}
+        setPageNumber={setPageNumber}
       />
-      <UserList searchResults={searchResults} />
     </Container>
   );
 }
