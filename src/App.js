@@ -10,6 +10,7 @@ import useSearch from './useSearch';
 export default function App() {
   const [query, setQuery] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
+  const [favoriteUser, setFavoriteUser] = useState([]);
   const { users, hasMore, loading, error, getUsers } = useSearch(
     query,
     pageNumber
@@ -18,7 +19,16 @@ export default function App() {
   function handleChange(event) {
     setQuery(event.target.value);
     setPageNumber(1);
-    console.log('USERS', users);
+  }
+
+  function toggleFavoriteUsers(id) {
+    if (favoriteUser.includes(id)) {
+      const newFavoriteUsers = favoriteUser.filter(favID => favID !== id);
+      setFavoriteUser(newFavoriteUsers);
+    } else {
+      setFavoriteUser([...favoriteUser, id]);
+      console.log(favoriteUser);
+    }
   }
 
   return (
@@ -35,10 +45,15 @@ export default function App() {
               hasMore={hasMore}
               setPageNumber={() => setPageNumber()}
               getUsers={getUsers}
+              onToggleFavoriteUser={toggleFavoriteUsers}
+              favoriteUser={favoriteUser}
             />
           }
         />
-        <Route path="favorites" element={<FavoritesPage />} />
+        <Route
+          path="favorites"
+          element={<FavoritesPage favoriteUser={favoriteUser} />}
+        />
         <Route path="user/:id" element={<UserDetailsPage />} />
       </Routes>
       <Navigation />
