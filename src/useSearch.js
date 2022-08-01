@@ -9,16 +9,16 @@ export default function useSearch(query, pageNumber) {
   const [users, setUsers] = useState([]);
   const [hasMore, setHasMore] = useState(false);
 
-  //   useEffect(() => {
-  //     setUsers([]);
-  //   }, [query]);
-
   useEffect(() => {
+    setUsers([]);
+  }, [query]);
+
+  function getUsers() {
     setLoading(true);
     setError(false);
     axios({
       method: 'GET',
-      url: 'https://api.github.com/search/users',
+      url: `https://api.github.com/search/users?per_page=100`,
       headers: {
         Accept: 'application/vnd.github+json',
         Authorization: `Token ${GITKEY}`,
@@ -28,13 +28,14 @@ export default function useSearch(query, pageNumber) {
       .then(res => {
         setUsers(res.data.items);
         setHasMore(res.data.items.lenght > 0);
+
         setLoading(false);
       })
       .catch(e => {
         if (axios.isCancel(e)) return;
         setError(true);
       });
-  }, [query, pageNumber]);
+  }
 
-  return { loading, error, users, hasMore };
+  return { loading, error, users, hasMore, getUsers };
 }

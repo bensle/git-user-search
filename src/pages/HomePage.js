@@ -12,19 +12,25 @@ export default function HomePage({
   error,
   hasMore,
   setPageNumber,
+  getUsers,
 }) {
   return (
     <Container>
       <Heading>
         <GitIcon /> GitHub User-Search
       </Heading>
-      <SearchBar onHandleChange={onHandleChange} query={query} />
+      <SearchBar
+        onHandleChange={onHandleChange}
+        query={query}
+        getUsers={getUsers}
+      />
       <UserList
         users={users}
         loading={loading}
         error={error}
         hasMore={hasMore}
         setPageNumber={setPageNumber}
+        getUsers={getUsers}
       />
     </Container>
   );

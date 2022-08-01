@@ -2,15 +2,22 @@ import { useRef, useCallback } from 'react';
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import styled from 'styled-components';
 
-export default function UserList({ users, loading, hasMore, setPageNumber }) {
+export default function UserList({
+  users,
+  loading,
+  hasMore,
+  setPageNumber,
+  getUsers,
+}) {
   const observer = useRef();
   const lastUserRef = useCallback(
     node => {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting && hasMore) {
+        if (entries[0].isIntersecting) {
           setPageNumber(prevPageNumber => prevPageNumber + 1);
+          getUsers();
         }
       });
       if (node) observer.current.observe(node);
@@ -32,7 +39,7 @@ export default function UserList({ users, loading, hasMore, setPageNumber }) {
           );
         } else {
           return (
-            <UserListItem>
+            <UserListItem key={user.id}>
               <UserImage src={user.avatar_url} alt="User Profile Picture" />
               <StyledHeading>{user.login}</StyledHeading>
               <FavSpan>
