@@ -32,7 +32,7 @@ const SearchForm = styled.form`
   padding: 5px;
   border-radius: 10px;
   align-items: center;
-  width: 60vw;
+  width: 55%;
   margin-top: 1rem;
 `;
 

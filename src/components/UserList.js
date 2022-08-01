@@ -59,7 +59,7 @@ const WrapperList = styled.ul`
   justify-items: center;
   gap: 10px;
   margin-top: 20px;
-  width: 60vw;
+  /* width: 60vw; */
   @media (max-width: 450px) {
     grid-template-columns: 1fr;
   }
