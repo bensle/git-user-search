@@ -1,40 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
 import FavoritesPage from './pages/FavoritesPage';
 import HomePage from './pages/HomePage';
 import UserDetailsPage from './pages/UserDetailsPage';
+import useSearch from './useSearch';
 
 export default function App() {
-  const [searchInput, setSearchinput] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const GITKEY = process.env.REACT_APP_GITKEY;
+  const [query, setQuery] = useState('');
+  const [pageNumber, setPageNumber] = useState(1);
+  const { users, hasMore, loading, error, getUsers } = useSearch(
+    query,
+    pageNumber
+  );
 
-  const URL = `https://api.github.com/search/users?q=${searchInput}`;
-
-  function fetchData() {
-    if (URL !== 'https://api.github.com/search/users?q=') {
-      fetch(URL, {
-        headers: {
-          Accept: 'application/vnd.github.text-match+json',
-          Authorization: `Token ${GITKEY}`,
-        },
-      })
-        .then(res => res.json())
-        .then(data => {
-          return setSearchResults(data.items);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
+  function handleChange(event) {
+    setQuery(event.target.value);
+    setPageNumber(1);
+    console.log('USERS', users);
   }
-
-  const handleChange = event => {
-    setSearchinput(event.target.value);
-    console.log('Result', searchResults);
-  };
 
   return (
     <>
@@ -44,8 +29,12 @@ export default function App() {
           element={
             <HomePage
               onHandleChange={handleChange}
-              searchInput={searchInput}
-              onFetchData={fetchData}
+              query={query}
+              users={users}
+              loading={loading}
+              hasMore={hasMore}
+              setPageNumber={() => setPageNumber()}
+              getUsers={getUsers}
             />
           }
         />

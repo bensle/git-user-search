@@ -1,17 +1,14 @@
+// import { useEffect } from 'react';
 import { useEffect } from 'react';
 import { MdSearch } from 'react-icons/md';
 import styled from 'styled-components';
 
-export default function SearchBar({
-  onHandleChange,
-  searchInput,
-  onFetchData,
-}) {
+export default function SearchBar({ onHandleChange, query, getUsers }) {
   useEffect(() => {
-    if (searchInput.length > 2) {
-      onFetchData();
+    if (query.length > 2) {
+      getUsers();
     }
-  }, [searchInput]);
+  }, [query]);
 
   return (
     <SearchForm>
@@ -21,7 +18,7 @@ export default function SearchBar({
         name="usersearch"
         id="usersearch"
         placeholder="Enter username..."
-        value={searchInput}
+        value={query}
         onChange={onHandleChange}
       ></SearchInput>
       <SearchIcon />
@@ -31,11 +28,11 @@ export default function SearchBar({
 
 const SearchForm = styled.form`
   display: flex;
-  border: 1px solid white;
+  border: 2px solid white;
   padding: 5px;
   border-radius: 10px;
   align-items: center;
-  width: 60vw;
+  width: 55%;
   margin-top: 1rem;
 `;
 

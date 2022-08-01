@@ -2,8 +2,18 @@ import { AiOutlineGithub } from 'react-icons/ai';
 import styled from 'styled-components';
 
 import SearchBar from '../components/SearchBar';
+import UserList from '../components/UserList';
 
-export default function HomePage({ onHandleChange, searchInput, onFetchData }) {
+export default function HomePage({
+  onHandleChange,
+  query,
+  users,
+  loading,
+  error,
+  hasMore,
+  setPageNumber,
+  getUsers,
+}) {
   return (
     <Container>
       <Heading>
@@ -11,8 +21,16 @@ export default function HomePage({ onHandleChange, searchInput, onFetchData }) {
       </Heading>
       <SearchBar
         onHandleChange={onHandleChange}
-        searchInput={searchInput}
-        onFetchData={onFetchData}
+        query={query}
+        getUsers={getUsers}
+      />
+      <UserList
+        users={users}
+        loading={loading}
+        error={error}
+        hasMore={hasMore}
+        setPageNumber={setPageNumber}
+        getUsers={getUsers}
       />
     </Container>
   );
