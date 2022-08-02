@@ -10,11 +10,17 @@ import useSearch from './useSearch';
 export default function App() {
   const [query, setQuery] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
-  const [favoriteUser, setFavoriteUser] = useState([]);
-  const { users, hasMore, loading, error, getUsers } = useSearch(
-    query,
-    pageNumber
-  );
+
+  const {
+    users,
+    hasMore,
+    loading,
+    error,
+    getUsers,
+    favoriteUser,
+    setFavoriteUser,
+    fetchedFavoriteUser,
+  } = useSearch(query, pageNumber);
 
   function handleChange(event) {
     setQuery(event.target.value);
@@ -25,9 +31,10 @@ export default function App() {
     if (favoriteUser.includes(id)) {
       const newFavoriteUsers = favoriteUser.filter(favID => favID !== id);
       setFavoriteUser(newFavoriteUsers);
+      console.log('1', fetchedFavoriteUser);
     } else {
       setFavoriteUser([...favoriteUser, id]);
-      console.log(favoriteUser);
+      console.log('2', fetchedFavoriteUser);
     }
   }
 

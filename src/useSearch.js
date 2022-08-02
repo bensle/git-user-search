@@ -8,6 +8,8 @@ export default function useSearch(query, pageNumber) {
   const [error, setError] = useState(false);
   const [users, setUsers] = useState([]);
   const [hasMore, setHasMore] = useState(false);
+  const [favoriteUser, setFavoriteUser] = useState([]);
+  const [fetchedFavoriteUser, setFetchedFavoriteUser] = useState([]);
 
   useEffect(() => {
     setUsers([]);
@@ -18,7 +20,7 @@ export default function useSearch(query, pageNumber) {
     setError(false);
     axios({
       method: 'GET',
-      url: `https://api.github.com/search/users?per_page=100`,
+      url: 'https://api.github.com/search/users?per_page=100',
       headers: {
         Accept: 'application/vnd.github+json',
         Authorization: `Token ${GITKEY}`,
@@ -37,5 +39,35 @@ export default function useSearch(query, pageNumber) {
       });
   }
 
-  return { loading, error, users, hasMore, getUsers };
+  const getFavorites = () => {
+    const URL = 'https://api.github.com/users/';
+    const fetchFavorites = favoriteUser.map(fav =>
+      fetch(URL + fav, {
+        headers: {
+          Accept: 'application/vnd.github+json',
+          Authorization: `Token ${GITKEY}`,
+        },
+      })
+        .then(data => data.json())
+        .then(data => data)
+    );
+    Promise.all(fetchFavorites).then(data => {
+      setFetchedFavoriteUser(data);
+    });
+  };
+
+  useEffect(() => {
+    getFavorites();
+  }, [favoriteUser]);
+
+  return {
+    loading,
+    error,
+    users,
+    hasMore,
+    getUsers,
+    favoriteUser,
+    setFavoriteUser,
+    fetchedFavoriteUser,
+  };
 }

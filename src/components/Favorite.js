@@ -9,7 +9,7 @@ export default function Favorite({
 }) {
   return (
     <>
-      {favoriteUser.includes(users.login) ? (
+      {favoriteUser?.includes(users.login) ? (
         <FavoriteAdded onClick={() => onToggleFavoriteUser(users.login)} />
       ) : (
         <AddFavorite onClick={() => onToggleFavoriteUser(users.login)} />
