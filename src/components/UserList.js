@@ -68,7 +68,6 @@ const WrapperList = styled.ul`
   justify-items: center;
   gap: 10px;
   margin-top: 20px;
-  /* width: 60vw; */
   @media (max-width: 450px) {
     grid-template-columns: 1fr;
   }
@@ -90,44 +89,6 @@ const UserListItem = styled.li`
   border: 2px solid white;
   padding: 10px;
   border-radius: 10px;
-`;
-
-const FavoriteAdded = styled(MdOutlineFavoriteBorder)`
-  background-color: transparent;
-  position: absolute;
-  font-size: 2rem;
-  color: hotpink;
-  right: 0;
-  top: 0;
-  padding: 5px;
-`;
-const AddFavorite = styled(MdOutlineFavoriteBorder)`
-  background-color: transparent;
-  position: absolute;
-  font-size: 2rem;
-  color: hotpink;
-  right: 0;
-  top: 0;
-  padding: 5px;
-`;
-
-const FavSpan = styled.div`
-  background-color: transparent;
-  position: absolute;
-  font-size: 1.7rem;
-  color: hotpink;
-  right: 0;
-  top: 0;
-  padding: 5px;
-`;
-const FavSpanAdded = styled.div`
-  background-color: red;
-  position: absolute;
-  font-size: 1.7rem;
-  color: red;
-  right: 0;
-  top: 0;
-  padding: 5px;
 `;
 
 const UserImage = styled.img`
