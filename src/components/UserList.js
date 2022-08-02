@@ -1,5 +1,4 @@
 import { useRef, useCallback } from 'react';
-import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import styled from 'styled-components';
 
 import Favorite from './Favorite';
@@ -26,6 +25,7 @@ export default function UserList({
       });
       if (node) observer.current.observe(node);
     },
+    /* eslint-disable-next-line */
     [loading, hasMore]
   );
   return (

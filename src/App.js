@@ -15,7 +15,6 @@ export default function App() {
     users,
     hasMore,
     loading,
-    error,
     getUsers,
     favoriteUser,
     setFavoriteUser,
