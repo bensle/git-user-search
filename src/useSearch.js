@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+import useLocalStorage from './useLocalStorage';
+
 const GITKEY = process.env.REACT_APP_GITKEY;
 
 export default function useSearch(query, pageNumber) {
@@ -8,7 +10,7 @@ export default function useSearch(query, pageNumber) {
   const [error, setError] = useState(false);
   const [users, setUsers] = useState([]);
   const [hasMore, setHasMore] = useState(false);
-  const [favoriteUser, setFavoriteUser] = useState([]);
+  const [favoriteUser, setFavoriteUser] = useLocalStorage('Favorites', []);
   const [fetchedFavoriteUser, setFetchedFavoriteUser] = useState([]);
 
   useEffect(() => {
@@ -30,7 +32,6 @@ export default function useSearch(query, pageNumber) {
       .then(res => {
         setUsers(res.data.items);
         setHasMore(res.data.items.lenght > 0);
-
         setLoading(false);
       })
       .catch(e => {
@@ -39,7 +40,7 @@ export default function useSearch(query, pageNumber) {
       });
   }
 
-  const getFavorites = () => {
+  function getFavorites() {
     const URL = 'https://api.github.com/users/';
     const fetchFavorites = favoriteUser.map(fav =>
       fetch(URL + fav, {
@@ -48,13 +49,13 @@ export default function useSearch(query, pageNumber) {
           Authorization: `Token ${GITKEY}`,
         },
       })
-        .then(data => data.json())
-        .then(data => data)
+        .then(favs => favs.json())
+        .then(favs => favs)
     );
-    Promise.all(fetchFavorites).then(data => {
-      setFetchedFavoriteUser(data);
+    Promise.all(fetchFavorites).then(favs => {
+      setFetchedFavoriteUser(favs);
     });
-  };
+  }
 
   useEffect(() => {
     getFavorites();
