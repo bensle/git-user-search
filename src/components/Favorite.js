@@ -9,7 +9,7 @@ export default function Favorite({
 }) {
   return (
     <>
-      {favoriteUser.includes(users.login) ? (
+      {favoriteUser?.includes(users.login) ? (
         <FavoriteAdded onClick={() => onToggleFavoriteUser(users.login)} />
       ) : (
         <AddFavorite onClick={() => onToggleFavoriteUser(users.login)} />
@@ -19,7 +19,6 @@ export default function Favorite({
 }
 
 const FavoriteAdded = styled(MdOutlineFavorite)`
-  /* background-color: transparent; */
   position: absolute;
   font-size: 2.2rem;
   color: red;
@@ -28,7 +27,6 @@ const FavoriteAdded = styled(MdOutlineFavorite)`
   padding: 5px;
 `;
 const AddFavorite = styled(MdOutlineFavoriteBorder)`
-  /* background-color: transparent; */
   position: absolute;
   font-size: 2.2rem;
   color: red;
