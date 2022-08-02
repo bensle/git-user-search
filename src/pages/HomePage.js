@@ -13,6 +13,8 @@ export default function HomePage({
   hasMore,
   setPageNumber,
   getUsers,
+  onToggleFavoriteUser,
+  favoriteUser,
 }) {
   return (
     <Container>
@@ -31,6 +33,8 @@ export default function HomePage({
         hasMore={hasMore}
         setPageNumber={setPageNumber}
         getUsers={getUsers}
+        onToggleFavoriteUser={onToggleFavoriteUser}
+        favoriteUser={favoriteUser}
       />
     </Container>
   );
