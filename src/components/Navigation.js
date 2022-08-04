@@ -24,10 +24,13 @@ export default function Navigation() {
 
 const Nav = styled.nav`
   display: grid;
-
   width: 100vw;
   position: fixed;
   bottom: 0;
+  background-color: var(--backgroundColor);
+  opacity: 0.95;
+  border-top: solid white 2px;
+  height: 4rem;
 `;
 
 const NavList = styled.ul`
@@ -44,16 +47,15 @@ const NavListItem = styled.li``;
 
 const Link = styled(NavLink)`
   text-decoration: none;
+  color: white;
   &.active {
-    fill: red;
+    color: red;
   }
 `;
 
 const StyledHomeIcon = styled(MdOutlineHome)`
   font-size: 3rem;
-  fill: white;
 `;
 const StyledFavIcon = styled(MdOutlineFavorite)`
   font-size: 3rem;
-  fill: white;
 `;

@@ -44,7 +44,7 @@ const Container = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 2rem;
+  padding-top: 1rem;
 `;
 const FavWrapper = styled.ul`
   display: grid;

@@ -14,29 +14,43 @@ export default function HomePage({
 }) {
   return (
     <Container>
-      <Heading>
-        <GitIcon /> GitHub User-Search
-      </Heading>
-      <SearchBar
-        onHandleChange={onHandleChange}
-        query={query}
-        getUsers={getUsers}
-      />
-      <UserList
-        users={users}
-        onToggleFavoriteUser={onToggleFavoriteUser}
-        favoriteUser={favoriteUser}
-      />
+      <HeadWrapper>
+        <Heading>
+          <GitIcon /> GitHub User-Search
+        </Heading>
+        <SearchBar
+          onHandleChange={onHandleChange}
+          query={query}
+          getUsers={getUsers}
+        />
+      </HeadWrapper>
+      <ListWrapper>
+        <UserList
+          users={users}
+          onToggleFavoriteUser={onToggleFavoriteUser}
+          favoriteUser={favoriteUser}
+        />
+      </ListWrapper>
     </Container>
   );
 }
-
-const Container = styled.main`
+const HeadWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 2rem;
+  width: 100vw;
+  padding-bottom: 1rem;
+  position: relative;
+  top: 0;
+  padding-top: 1rem;
+`;
+const ListWrapper = styled.div`
+  overflow-y: auto;
+`;
+const Container = styled.main`
+  display: grid;
+  height: 100vh;
 `;
 
 const Heading = styled.h1`

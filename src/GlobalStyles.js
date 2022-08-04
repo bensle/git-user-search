@@ -10,7 +10,7 @@ export default styled.createGlobalStyle`
   }
   :root {
     --textcolor: #fff;
-    --backgroundColor: lightgray;
+    --backgroundColor: #262a34;
   }
 
   body {
