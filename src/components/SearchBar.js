@@ -8,6 +8,7 @@ export default function SearchBar({ onHandleChange, query, getUsers }) {
     if (query.length > 2) {
       getUsers();
     }
+    /* eslint-disable-next-line */
   }, [query]);
 
   return (

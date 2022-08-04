@@ -56,9 +56,9 @@ export default function useSearch(query, pageNumber) {
       setFetchedFavoriteUser(favs);
     });
   }
-
   useEffect(() => {
     getFavorites();
+    /* eslint-disable-next-line */
   }, [favoriteUser]);
 
   return {

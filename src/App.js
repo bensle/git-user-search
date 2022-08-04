@@ -13,9 +13,6 @@ export default function App() {
 
   const {
     users,
-    hasMore,
-    loading,
-    error,
     getUsers,
     favoriteUser,
     setFavoriteUser,
@@ -31,10 +28,8 @@ export default function App() {
     if (favoriteUser.includes(id)) {
       const newFavoriteUsers = favoriteUser.filter(favID => favID !== id);
       setFavoriteUser(newFavoriteUsers);
-      console.log('1', fetchedFavoriteUser);
     } else {
       setFavoriteUser([...favoriteUser, id]);
-      console.log('2', fetchedFavoriteUser);
     }
   }
 
@@ -48,9 +43,6 @@ export default function App() {
               onHandleChange={handleChange}
               query={query}
               users={users}
-              loading={loading}
-              hasMore={hasMore}
-              setPageNumber={() => setPageNumber()}
               getUsers={getUsers}
               onToggleFavoriteUser={toggleFavoriteUsers}
               favoriteUser={favoriteUser}
@@ -59,7 +51,13 @@ export default function App() {
         />
         <Route
           path="favorites"
-          element={<FavoritesPage favoriteUser={favoriteUser} />}
+          element={
+            <FavoritesPage
+              favoriteUser={favoriteUser}
+              onToggleFavoriteUser={toggleFavoriteUsers}
+              fetchedFavoriteUser={fetchedFavoriteUser}
+            />
+          }
         />
         <Route path="user/:id" element={<UserDetailsPage />} />
       </Routes>

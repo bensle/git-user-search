@@ -8,10 +8,6 @@ export default function HomePage({
   onHandleChange,
   query,
   users,
-  loading,
-  error,
-  hasMore,
-  setPageNumber,
   getUsers,
   onToggleFavoriteUser,
   favoriteUser,
@@ -28,11 +24,6 @@ export default function HomePage({
       />
       <UserList
         users={users}
-        loading={loading}
-        error={error}
-        hasMore={hasMore}
-        setPageNumber={setPageNumber}
-        getUsers={getUsers}
         onToggleFavoriteUser={onToggleFavoriteUser}
         favoriteUser={favoriteUser}
       />
@@ -40,7 +31,7 @@ export default function HomePage({
   );
 }
 
-const Container = styled.div`
+const Container = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
