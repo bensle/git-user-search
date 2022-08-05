@@ -59,7 +59,15 @@ export default function App() {
             />
           }
         />
-        <Route path="user/:id" element={<UserDetailsPage />} />
+        <Route
+          path="user/:id"
+          element={
+            <UserDetailsPage
+              onToggleFavoriteUser={toggleFavoriteUsers}
+              favoriteUser={favoriteUser}
+            />
+          }
+        />
       </Routes>
       <Navigation />
     </>
