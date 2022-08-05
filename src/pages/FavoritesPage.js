@@ -11,30 +11,30 @@ export default function FavoritePage({
   return (
     <Container>
       <Heading>Favorites</Heading>
-      <FavWrapper>
-        {fetchedFavoriteUser && fetchedFavoriteUser.length > 0 ? (
-          fetchedFavoriteUser.map(fetchedUser => {
-            return (
-              <div key={fetchedUser.id}>
+      {fetchedFavoriteUser && fetchedFavoriteUser.length > 0 ? (
+        fetchedFavoriteUser.map(fetchedUser => {
+          return (
+            <FavWrapper key={fetchedUser.id}>
+              <div>
                 <User
                   user={fetchedUser}
                   onToggleFavoriteUser={onToggleFavoriteUser}
                   favoriteUser={favoriteUser}
                 />
               </div>
-            );
-          })
-        ) : (
-          <NoFavsWrapper>
-            <IconWrapper>
-              <Nofavs />
-            </IconWrapper>
-            <NoResultsHeading>
-              It seems that you have not set any Favorites yet!
-            </NoResultsHeading>
-          </NoFavsWrapper>
-        )}
-      </FavWrapper>
+            </FavWrapper>
+          );
+        })
+      ) : (
+        <NoFavsWrapper>
+          <IconWrapper>
+            <Nofavs />
+          </IconWrapper>
+          <NoResultsHeading>
+            It seems that you have not set any Favorites yet!
+          </NoResultsHeading>
+        </NoFavsWrapper>
+      )}
     </Container>
   );
 }
@@ -44,7 +44,7 @@ const Container = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 2rem;
+  padding-top: 1rem;
 `;
 const FavWrapper = styled.ul`
   display: grid;
