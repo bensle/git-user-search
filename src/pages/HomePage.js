@@ -34,9 +34,13 @@ export default function HomePage({
     </Container>
   );
 }
+const Container = styled.main`
+  display: grid;
+  grid-template-rows: 1fr;
+  height: 100vh;
+`;
 const HeadWrapper = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100vw;
@@ -47,10 +51,6 @@ const HeadWrapper = styled.div`
 `;
 const ListWrapper = styled.div`
   overflow-y: auto;
-`;
-const Container = styled.main`
-  display: grid;
-  height: 100vh;
 `;
 
 const Heading = styled.h1`
