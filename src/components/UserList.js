@@ -28,6 +28,7 @@ const WrapperList = styled.ul`
   justify-items: center;
   gap: 10px;
   margin-top: 20px;
+  margin-bottom: 5rem;
   @media (max-width: 450px) {
     grid-template-columns: 1fr;
   }

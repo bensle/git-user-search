@@ -1,3 +1,4 @@
+import { AiOutlineGithub } from 'react-icons/ai';
 import { FaExclamationCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -10,29 +11,33 @@ export default function FavoritePage({
 }) {
   return (
     <Container>
-      <Heading>Favorites</Heading>
-      {fetchedFavoriteUser && fetchedFavoriteUser.length > 0 ? (
-        fetchedFavoriteUser.map(fetchedUser => {
-          return (
-            <FavWrapper key={fetchedUser.id}>
+      <Heading>
+        <GitIcon />
+        Favorites
+      </Heading>
+      <FavWrapper>
+        {fetchedFavoriteUser && fetchedFavoriteUser.length > 0 ? (
+          fetchedFavoriteUser.map(fetchedUser => {
+            return (
               <User
                 user={fetchedUser}
                 onToggleFavoriteUser={onToggleFavoriteUser}
                 favoriteUser={favoriteUser}
+                key={fetchedUser.id}
               />
-            </FavWrapper>
-          );
-        })
-      ) : (
-        <NoFavsWrapper>
-          <IconWrapper>
-            <Nofavs />
-          </IconWrapper>
-          <NoResultsHeading>
-            It seems that you have not set any Favorites yet!
-          </NoResultsHeading>
-        </NoFavsWrapper>
-      )}
+            );
+          })
+        ) : (
+          <NoFavsWrapper>
+            <IconWrapper>
+              <Nofavs />
+            </IconWrapper>
+            <NoResultsHeading>
+              It seems that you have not set any Favorites yet!
+            </NoResultsHeading>
+          </NoFavsWrapper>
+        )}
+      </FavWrapper>
     </Container>
   );
 }
@@ -49,7 +54,7 @@ const FavWrapper = styled.ul`
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
   gap: 10px;
-  margin-top: 20px;
+  margin: 20px 0 5rem 0;
   @media (max-width: 450px) {
     grid-template-columns: 1fr;
   }
@@ -65,7 +70,9 @@ const FavWrapper = styled.ul`
 `;
 
 const Heading = styled.h1`
+  display: flex;
   font-size: clamp(1.5rem, 2rem, 4rem);
+  gap: 1rem;
 `;
 const NoFavsWrapper = styled.div`
   display: flex;
@@ -91,4 +98,7 @@ const Nofavs = styled(FaExclamationCircle)`
   /* margin-top: 2rem; */
   color: red;
   font-size: 2.5rem;
+`;
+const GitIcon = styled(AiOutlineGithub)`
+  font-size: clamp(1.5rem, 2rem, 4rem);
 `;

@@ -1,11 +1,21 @@
 import { CgUnavailable } from 'react-icons/cg';
 import styled from 'styled-components';
 
+import Favorite from './Favorite';
+
 export default function Details({ user, onToggleFavoriteUser, favoriteUser }) {
   return (
     <UserDetailsWrapper>
-      <UserImage src={user.avatar_url} alt="User Profile Picture" />
-      <StyledHeading>{user.login}</StyledHeading>
+      <UserWrapper>
+        <Favorite
+          onToggleFavoriteUser={onToggleFavoriteUser}
+          favoriteUser={favoriteUser}
+          users={user}
+        />
+        <UserImage src={user.avatar_url} alt="User Profile Picture" />
+        <StyledHeading>{user.login}</StyledHeading>
+      </UserWrapper>
+
       <DetailsList>
         <DetailsListItem>
           <h4>Link:</h4>
@@ -81,27 +91,28 @@ export default function Details({ user, onToggleFavoriteUser, favoriteUser }) {
 }
 const UserDetailsWrapper = styled.div`
   display: grid;
-  align-content: center;
   justify-content: center;
 `;
-
+const UserWrapper = styled.div`
+  position: relative;
+  top: 0;
+  padding: 10px;
+`;
 const DetailsList = styled.ul`
   margin-top: 20px;
   list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 10px;
 `;
-const DetailsListItem = styled.li`
-  margin: 1rem 0;
-`;
+const DetailsListItem = styled.li``;
 
 const DetailsLink = styled.a`
   color: white;
 `;
 const StyledHeading = styled.h2`
   text-align: center;
-  margin: 5px 0;
   font-size: 1rem;
 `;
 const UserImage = styled.img`

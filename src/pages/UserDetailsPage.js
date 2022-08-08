@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AiOutlineGithub } from 'react-icons/ai';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -41,7 +42,13 @@ export default function UserDetailsPage({
 
   return (
     <Container>
-      <Heading>UserDetails</Heading>
+      <HeadWrapper>
+        <Heading>
+          <GitIcon />
+          UserDetails
+        </Heading>
+      </HeadWrapper>
+
       {currentUser && (
         <Details
           user={currentUser}
@@ -54,12 +61,24 @@ export default function UserDetailsPage({
 }
 
 const Container = styled.main`
-  display: grid;
-  justify-items: center;
-  /* flex-direction: column; */
+  /* display: grid;
+  justify-items: center; */
+  height: 100vh;
+`;
+const HeadWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
   padding: 1rem 0;
+  position: relative;
+  top: 0;
+`;
+const GitIcon = styled(AiOutlineGithub)`
+  font-size: clamp(1.5rem, 2rem, 4rem);
 `;
 const Heading = styled.h1`
+  display: flex;
   font-size: clamp(1.5rem, 2rem, 4rem);
-  padding: 1rem 0;
+  gap: 1rem;
 `;
