@@ -24,20 +24,27 @@ export default function UserList({
 
 const WrapperList = styled.ul`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
   justify-items: center;
   gap: 10px;
   margin-top: 20px;
+  margin-bottom: 5rem;
   @media (max-width: 450px) {
     grid-template-columns: 1fr;
   }
-  @media (min-width: 450px) {
+  @media (min-width: 500px) {
     grid-template-columns: 1fr 1fr;
   }
   @media (min-width: 750px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  @media (min-width: 900px) {
+  @media (min-width: 1000px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  @media (min-width: 1300px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  @media (min-width: 1800px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   }
 `;

@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Favorite from './Favorite';
 export default function User({ user, onToggleFavoriteUser, favoriteUser }) {
   return (
     <UserListItem>
-      <UserImage src={user.avatar_url} alt="User Profile Picture" />
+      <Link to={`/user/${user.login}`}>
+        <UserImage src={user.avatar_url} alt="User Profile Picture" />
+      </Link>
       <StyledHeading>{user.login}</StyledHeading>
       <Favorite
         users={user}
