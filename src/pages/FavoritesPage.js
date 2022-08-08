@@ -15,13 +15,11 @@ export default function FavoritePage({
         fetchedFavoriteUser.map(fetchedUser => {
           return (
             <FavWrapper key={fetchedUser.id}>
-              <div>
-                <User
-                  user={fetchedUser}
-                  onToggleFavoriteUser={onToggleFavoriteUser}
-                  favoriteUser={favoriteUser}
-                />
-              </div>
+              <User
+                user={fetchedUser}
+                onToggleFavoriteUser={onToggleFavoriteUser}
+                favoriteUser={favoriteUser}
+              />
             </FavWrapper>
           );
         })

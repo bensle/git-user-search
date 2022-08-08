@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Details from '../components/Details';
 
@@ -15,6 +16,7 @@ export default function UserDetailsPage({
 
   useEffect(() => {
     getUser();
+    /* eslint-disable-next-line */
   }, []);
 
   function getUser() {
@@ -38,9 +40,8 @@ export default function UserDetailsPage({
   }
 
   return (
-    <>
-      <h1>UserDetails</h1>
-      {/* <h2>{currentUser.login}</h2> */}
+    <Container>
+      <Heading>UserDetails</Heading>
       {currentUser && (
         <Details
           user={currentUser}
@@ -48,6 +49,17 @@ export default function UserDetailsPage({
           favoriteUser={favoriteUser}
         />
       )}
-    </>
+    </Container>
   );
 }
+
+const Container = styled.main`
+  display: grid;
+  justify-items: center;
+  /* flex-direction: column; */
+  padding: 1rem 0;
+`;
+const Heading = styled.h1`
+  font-size: clamp(1.5rem, 2rem, 4rem);
+  padding: 1rem 0;
+`;

@@ -44,10 +44,9 @@ const HeadWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100vw;
-  padding-bottom: 1rem;
+  padding: 1rem 0;
   position: relative;
   top: 0;
-  padding-top: 1rem;
 `;
 const ListWrapper = styled.div`
   overflow-y: auto;
