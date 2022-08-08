@@ -74,7 +74,7 @@ const Heading = styled.h1`
   font-size: clamp(1.5rem, 2rem, 4rem);
   gap: 1rem;
 `;
-const NoFavsWrapper = styled.div`
+const NoFavsWrapper = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,14 +88,12 @@ const IconWrapper = styled.div`
   justify-content: space-between;
   padding: 10px;
 `;
-const NoResultsHeading = styled.h2`
+const NoResultsHeading = styled.p`
   font-size: clamp(1.5rem, 1.8rem, 4rem);
-  /* margin: 2rem; */
   padding: 10px;
 `;
 
 const Nofavs = styled(FaExclamationCircle)`
-  /* margin-top: 2rem; */
   color: red;
   font-size: 2.5rem;
 `;

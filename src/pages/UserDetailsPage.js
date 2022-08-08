@@ -33,7 +33,6 @@ export default function UserDetailsPage({
         response.message
           ? setError('The user could not be found')
           : setCurrentUser(response);
-        console.log('currentuser', currentUser);
       })
       .catch(error => {
         setError('The user could not be found');
@@ -61,8 +60,6 @@ export default function UserDetailsPage({
 }
 
 const Container = styled.main`
-  /* display: grid;
-  justify-items: center; */
   height: 100vh;
 `;
 const HeadWrapper = styled.div`
